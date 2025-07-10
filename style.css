@@ -1,0 +1,204 @@
+/*
+Theme Name: AgroVision FSE
+Theme URI: https://gracethemes.com/themes/free-green-farm-wordpress-theme/
+Author: Grace Themes
+Author URI: https://gracethemes.com/
+Description: The AgroVision FSE is a free green farm WordPress theme design for organic food, agriculture, organic food store, organic agriculture, farmer. This theme is the best option for all sorts of farm-related websites like dairy farms, orchards, animal husbandry, organic farming, coop, etc. With multiple impressive features and advantages functionalities, this is undoubtedly the best option to go for. This WordPress theme is highly responsive and works at a fast pace without lagging or slowing down. It is a multi-browser compatible option; therefore, it works with the same efficiency on all website browsers. It also works efficiently on all resolution devices. So it will run smoothly on both high and low-end devices. As it is retina-ready, the visuals offered by AgroVision FSE are undoubtedly impressive. You can also use this theme on a wide range of devices like laptops, PCs, tablets, etc. You can avail of the best SEO services with it as it is completely SEO-optimized and compatible with popular SEO plugins like YOAST SEO and RankMath. Many other popular WordPress plugins, like NextGen Gallery, Accordions, Sliders, WP Forms, MailChimp, etc., are compatible with it, making it highly efficient for crafting a prominent online presence. Demo: https://gracethemesdemo.com/agrovision/
+
+Version: 1.0
+License: GNU General Public License version 2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: agrovision-fse
+Requires PHP:  5.6
+Tested up to: 6.7
+Tags:blog, news, one-column, two-columns, right-sidebar, block-styles, custom-colors, editor-style, custom-background, custom-menu, featured-images, template-editing, full-site-editing, block-patterns,  threaded-comments, wide-blocks, translation-ready
+AgroVision  FSE WordPress Theme has been created by Grace Themes(gracethemes.com), 2024.
+AgroVision  FSE WordPress Theme is released under the terms of GNU GPL
+*/
+body.page-template-front .site-main-header {  
+	width:100%; background:transparent !important; 	position: absolute !important;	top:50px; z-index:999;
+}
+.site-main-header{ 
+	position:relative;background-color:#262325; 
+}
+.clear{ clear:both; }
+
+/*dropdown menu background color*/
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container{ 
+	background-color:#ffffff;
+}
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container li{ 
+	padding:5px 0; 
+	border-bottom:1px solid #f0f0f0 !important;
+}
+.wp-block-navigation__submenu-container.wp-block-navigation-submenu{ 
+	padding-top:30px !important
+}
+.wp-block-navigation__submenu-container.wp-block-navigation-submenu li ul{ 
+	padding-top:0 !important; 
+	left:100% !important; 
+	right:auto !important;
+}
+
+.logo { 
+    position: relative;
+}
+
+/* = Sidebar CSS
+----------------------------------------------- */
+.st-widgetBX ul.wp-block-latest-posts li{ 
+	margin-bottom:20px; 
+	min-height:80px;
+}
+.st-widgetBX ul.wp-block-latest-posts li a.wp-block-latest-posts__post-title{ 
+	margin-bottom:5px !important; 
+	display:block; 
+	line-height:20px;
+}
+
+
+/* = Blog page Design CSS
+----------------------------------------------- */
+ul.blog-list-style{ 
+	margin:0; 
+	padding:0; 
+}
+ul.blog-list-style li{ 	
+	padding:30px;
+	border-radius:5px; 
+	display:flow-root; 
+	margin-bottom:25px; 
+	box-shadow:0 0 30px rgb(193 193 193/30%);
+	
+}
+ul.blog-list-style li .blog-thumbx{ 
+	margin:0 35px 20px 0;
+}
+ul.blog-list-style li a.wp-block-post-excerpt__more-link{ 
+	padding:10px 20px; border-radius:10px
+}
+
+ul.blog-list-style li .blog-thumbx.wp-block-post-featured-image a,
+ul.blog-list-style li .blog-thumbx.wp-block-post-featured-image img{ 
+	height:auto;
+}
+.wp-block-group.sidebar-blog .st-widgetBX{ 
+	box-shadow:0 0 30px rgb(193 193 193/30%);
+}
+
+.wp-block-group.PostStyle-1{ 
+	padding:30px;
+	border-radius:5px; 
+	display:flow-root; 
+	box-shadow:0 0 30px rgb(193 193 193/30%);
+}
+.wp-block-column.fse-page-layout{	 
+	display:flow-root; 
+	padding:30px;
+	border-radius:5px;
+	box-shadow:0 0 30px rgb(193 193 193/30%);
+}
+
+.fifth-features-cols{position:relative !important; border-radius:10px; overflow:hidden !important;  }
+.fifth-features-cols .ficon_bx{ margin:0 auto 30px auto !important; background-color:#dbefdc; width:90px !important; height:90px!important; line-height:62px;  text-align:center!important; border-radius:100%;  }
+.fifth-features-cols .ficon_bx img{ height:40px; width:auto; text-align:center; display:inline-block !important;}
+.fifth-features-cols:after { content: ''; width: 60px; height: 60px; background: #47a14a; position: absolute !important; bottom: -30px!important; right: -30px!important; border-radius: 100%; top:auto !important; left:auto !important;}
+.fifth-features-cols:hover{ background-color:#47a14a !important;}
+.fifth-features-cols:hover::after{ background-color:#fff !important;}
+.fifth-features-cols:hover h5.wp-block-heading{ color:#fff !important;}
+
+
+
+/* = Footer CSS
+----------------------------------------------- */
+.site-footer{ 
+	position:relative;
+}
+.site-footer h3.wp-block-heading{ 
+	position:relative;
+	padding-bottom:20px; 
+}
+.site-footer h3::after {
+  content: '';
+  width: 25px;
+  height: 2px;
+  background: #4baf4f;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+ul.fs-footer-post{ 
+	margin:0; 
+	padding:0;
+}
+ul.fs-footer-post li{ 
+	list-style:none; 
+	margin-bottom:30px;
+}
+ul.fs-footer-post li .wp-block-latest-posts__featured-image{ 
+	margin-top:6px;
+}
+ul.fs-footer-post li .wp-block-latest-posts__featured-image img{ 
+	border-radius:10px;
+}
+ul.fs-footer-post li .wp-block-latest-posts__post-title{ 
+	margin-bottom:15px; 
+	display:block; 
+	line-height:22px;
+}
+ul.fs-footer-post li .wp-block-latest-posts__post-title:hover{ 
+	color:#8cc73e;
+}
+footer.wp-block-template-part{ 
+	margin-block-start:0 !important
+}
+
+.Footer-QuickLinks{ list-style:none !important}
+.Footer-QuickLinks li{ list-style:none !important; padding:5px 0 5px 10px !important;}
+.Footer-QuickLinks li::marker { content: ' > ';  font-size: 16px;  }
+.Footer-QuickLinks li a:hover{ text-decoration:none; font-weight:600;}
+.site-footer ul.wp-block-social-links li a{ font-size:20px; padding:10px;}
+
+
+/* = Contact Form 7 CSS
+----------------------------------------------- */
+.wpcf7{ 
+	margin:30px 0 0;padding:0;
+}
+.wpcf7 input[type="text"], 
+.wpcf7 input[type="tel"], 
+.wpcf7 input[type="email"]{ 
+	width:40%;
+	border:1px solid #cccccc;
+	box-shadow:inset 1px 1px 2px #ccc;
+	color:#797979;
+	margin-bottom:0;
+	height:40px;
+	padding:0 15px;
+}	
+.wpcf7 textarea{
+	color:#797979;
+	margin-bottom:25px;
+	border:1px solid #cccccc;
+	box-shadow:inset 1px 1px 2px #ccc;
+	padding:10px;
+	width:60%;
+	height:160px;
+	font-size:12px;
+}
+.wpcf7 input[type="submit"]{
+	border-radius:40px;
+	font-weight:600;
+	font-size:16px;
+	cursor:pointer;
+	background-color:#60c19f;
+	padding:20px 40px;
+	color:#ffffff;
+	width:auto;
+	border:none;
+	text-transform:uppercase;
+}
+.wpcf7 input[type="submit"]:hover{
+	background-color:#101010;
+}
