@@ -1,0 +1,80 @@
+# render.yaml
+# Defines the services for deploying the WordPress theme and a MySQL database on Render.
+
+services:
+  # WordPress Web Service
+  - type: web
+    name: wordpress-theme
+    env: docker # Specifies that we are using a Dockerfile
+    dockerfilePath: ./Dockerfile
+    plan: free # Or your preferred instance type
+    healthCheckPath: / # WordPress should respond at the root
+    envVars:
+      - key: WORDPRESS_DB_HOST
+        fromService:
+          type: pserv # Private Service
+          name: wordpress-mysql
+          envVarKey: MYSQL_HOST_INTERNAL # Render provides internal hostnames
+      - key: WORDPRESS_DB_USER
+        value: wordpress
+      - key: WORDPRESS_DB_PASSWORD
+        generateValue: true # Render will generate a secure password
+      - key: WORDPRESS_DB_NAME
+        value: wordpress
+      # It's good practice to set WordPress salts as environment variables
+      # You can generate these from https://api.wordpress.org/secret-key/1.1/salt/
+      # For simplicity, we'll let WordPress handle them or the user can add them manually.
+      # Example:
+      # - key: WORDPRESS_AUTH_KEY
+      #   generateValue: true
+      # ... (and so on for other salts)
+
+    # Mount a persistent disk for WordPress uploads and other persistent data
+    # The official WordPress image stores persistent data in /var/www/html
+    # We are primarily concerned with wp-content/uploads here if plugins/themes are managed via Git.
+    # For a full WordPress site, you'd want /var/www/html/wp-content to be persistent or at least wp-content/uploads.
+    # The base WordPress image handles moving default themes/plugins if the volume is empty.
+    disks:
+      - name: wordpress-data
+        mountPath: /var/www/html/wp-content # Or /var/www/html for all WP data
+        sizeGB: 10 # Adjust as needed
+
+  # MySQL Database Service (as a private service)
+  - type: pserv # Private Service, not directly accessible from the internet
+    name: wordpress-mysql
+    env: docker
+    dockerImage: mysql:8.0 # Using MySQL 8.0
+    plan: free # Or your preferred instance type for databases
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        generateValue: true # Render generates a secure root password
+      - key: MYSQL_DATABASE
+        value: wordpress
+      - key: MYSQL_USER
+        value: wordpress
+      - key: MYSQL_PASSWORD
+        # This should match WORDPRESS_DB_PASSWORD or be sourced from a secret group
+        # For this example, we'll assume WordPress will use the `wordpress` user created by MYSQL_USER/MYSQL_PASSWORD
+        # and its password will be the one from WORDPRESS_DB_PASSWORD.
+        # A more robust setup might use Render's secret groups.
+        fromService:
+          type: web
+          name: wordpress-theme
+          envVarKey: WORDPRESS_DB_PASSWORD
+      # Internal host environment variable for Render's service discovery
+      - key: MYSQL_HOST_INTERNAL
+        value: wordpress-mysql # The name of this service
+
+    disks:
+      - name: mysql-data
+        mountPath: /var/lib/mysql
+        sizeGB: 10 # Adjust as needed
+    # MySQL typically runs on port 3306. Render's private networking handles access.
+    # No explicit port mapping is needed for private services unless for specific reasons.
+
+# Note: For a production setup, consider:
+# - Using specific versions for Docker images (e.g., wordpress:6.4.2-php8.2-apache, mysql:8.0.33)
+# - More robust secret management for database passwords.
+# - Database backup strategy for the MySQL container.
+# - Configuring WordPress salts and keys via environment variables.
+# - Adjusting instance plans and disk sizes based on expected load.
